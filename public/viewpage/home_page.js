@@ -56,7 +56,7 @@ export async function buildHomeScreen(products) {
             rates=rates+ratings[j].rating;
         }
         if(ratings.length!=0)
-            rates=(rates/ratings.length)*2;
+            rates=rates/ratings.length;
         html += buildProductView(products[i], i,rates)
     }
     console.log(products);
