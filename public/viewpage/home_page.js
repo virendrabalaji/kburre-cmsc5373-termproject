@@ -1,7 +1,7 @@
 import { formSearch, MENU, modalallreview, root } from './elements.js';
 import { ROUTE_PATHNAMES } from '../controller/route.js';
 import * as Util from './util.js';
-import { addproductwishlist, getProductComment, getProductList, getProductRating, paginatedProduct } from '../controller/firestore_controller.js';
+import { addproductwishlist, getProductComment, getProductList, getProductRating, } from '../controller/firestore_controller.js';
 import { DEV } from '../model/constants.js';
 import { currentUser } from '../controller/firebase_auth.js';
 import { cart } from './cart_page.js';
@@ -42,31 +42,31 @@ export async function home_page() {
 export async function buildHomeScreen(products) {
     let html = '';
     let ratings=[]
-    for (let i = 0; i < products.length; i++) {     // for loop started   
-        let rates=0.0 //initilaisation
+    for (let i = 0; i < products.length; i++) {        
+        let rates=0.0 
         ratings=[]
         try{
             ratings=await getProductRating(products[i].docId);
         }
-        catch(e){ //catch exception
+        catch(e){ 
             console.log(e);
         }
-        for(let j=0;j<ratings.length;j++) //for loop
+        for(let j=0;j<ratings.length;j++) 
         {
             rates=rates+ratings[j].rating;
         }
         if(ratings.length!=0)
-            rates=rates/ratings.length;
+            rates=(rates/ratings.length)*2;
         html += buildProductView(products[i], i,rates)
     }
     console.log(products);
-    root.innerHTML = html; //initilaisation
+    root.innerHTML = html; 
 
     const productForms = document.getElementsByClassName('form-product-qty');
     for (let i = 0; i < productForms.length; i++) {
         productForms[i].addEventListener('submit', async e => {
             e.preventDefault();
-            const p = products[e.target.index.value]; //initilaisation
+            const p = products[e.target.index.value]; 
             const submitter = e.target.submitter;
             console.log(submitter)
             if (submitter == 'DEC') {

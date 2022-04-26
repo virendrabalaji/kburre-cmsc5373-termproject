@@ -6,7 +6,6 @@ import * as ProfilePage from './viewpage/profile_page.js';
 import * as WishlistPage from './viewpage/wishlist_page.js';
 import * as SearchPage from './viewpage/search_page.js';
 import * as SortPage from './viewpage/sort_page.js';
-import * as Pagination from './viewpage/paginated_page.js';
 import {routing} from './controller/route.js';
 
 
@@ -21,7 +20,6 @@ SortPage.addEventListenersProductNameAsc();
 SortPage.addEventListenersProductNameDesc();
 SortPage.addEventListenersProductPriceAsc();
 SortPage.addEventListenersProductPriceDesc();
-Pagination.addEventListeners();
 
 
 window.onload = () => {
