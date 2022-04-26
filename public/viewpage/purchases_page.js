@@ -143,14 +143,13 @@ async function buildTransactionView(cart) {
                     <div class="col-md-6">
                     <div class="box box-blue box-example-square">
                         <div class="box-header">Square Rating</div>
-                        <div class="box-body"> <select id="example-square" name="rating" autocomplete="off">
-                                <option value="0"></option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select> </div>
+                        <div class="box-body"> <div id="example-square" name="rating" autocomplete="off">
+                                <button value ="1">1</button>
+                                <button value ="2">2</button>
+                                <button value ="3">3</button>
+                                <button value ="4">4</button>
+                                <button value ="5">5</button>
+                            </div> </div>
                             </div>
                         </div>
                     </div>
@@ -186,30 +185,7 @@ async function buildTransactionView(cart) {
             }
 
             const addreviewbutton = document.getElementById("addbtn");
-            addreviewbutton.addEventListener("click", async f => {
-                f.preventDefault();
-
-                let test1 = document.forms["form-review"];
-                const y = test1.review_text_box.value.toString();
-
-                console.log(y);
-                const comment = y; //initilaisation
-                const email = currentUser.email; //initilaisation
-                const timestamp = Date.now();//initilaisation
-                const comments = new product_comment({
-                    productId, comment, email, timestamp
-                });
-                console.log(comments)
-                try {
-                    const id = await addproductcomment(comments);
-                    comments.set_docId(id);
-                }
-                catch (f) {
-                    console.log("error");
-                }
-            })
-
-            
+  
             addreviewbutton.addEventListener("click", async f => {
                 f.preventDefault();
 
